@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কারিগরি বিদ্যাপাঠ | পলিটেকনিক ই-লার্নিং প্ল্যাটফর্ম</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i> কারিগরি বিদ্যাপাঠ
+        </div>
+        <p>পলিটেকনিক শিক্ষার্থীদের জন্য মানসম্মত শিক্ষা প্ল্যাটফর্ম</p>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="#home"><i class="fa-solid fa-house"></i> হোম</a>
+        <a href="#about"><i class="fa-solid fa-circle-info"></i> আমাদের সম্পর্কে</a>
+        <a href="#courses"><i class="fa-solid fa-book-open"></i> কোর্সসমূহ</a>
+        <a href="#teachers"><i class="fa-solid fa-user-tie"></i> শিক্ষকবৃন্দ</a>
+        <a href="#routine"><i class="fa-solid fa-calendar-days"></i> রুটিন</a>
+        <a href="#notice"><i class="fa-solid fa-bullhorn"></i> নোটিশ</a>
+        <a href="#contact"><i class="fa-solid fa-envelope"></i> যোগাযোগ</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero-card">
+            <span class="badge">স্বাগতম</span>
+            <h2>কারিগরি বিদ্যাপাঠে আপনাকে স্বাগতম</h2>
+            <p>
+                পলিটেকনিক শিক্ষার্থীদের শিক্ষা, নোট, ভিডিও ক্লাস, রুটিন ও প্রয়োজনীয় সকল তথ্যের একটি নিরাপদ ও নির্ভরযোগ্য প্ল্যাটফর্ম।
+            </p>
+            <button onclick="showMessage()"><i class="fa-solid fa-rocket"></i> এক্সপ্লোর করুন</button>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2><i class="fa-solid fa-circle-info"></i> আমাদের সম্পর্কে</h2>
+            <p>
+                কারিগরি বিদ্যাপাঠ হলো পলিটেকনিক ইনস্টিটিউটের ডিপ্লোমা শিক্ষার্থীদের জন্য একটি আধুনিক লার্নিং প্ল্যাটফর্ম। আমাদের মূল লক্ষ্য কারিগরি শিক্ষাকে আরও সহজ, প্রাঞ্জল ও সবার কাছে পৌঁছে দেয়া।
+            </p>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses">
+            <h2><i class="fa-solid fa-book-open"></i> আমাদের জনপ্রিয় কোর্সসমূহ</h2>
+            
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Electrical Technology</h3>
+                    <p>ইলেকট্রিক্যাল বিভাগের ১ম থেকে ৮মে সেমিস্টার পর্যন্ত বিষয়ভিত্তিক গাইড ও নোট।</p>
+                    <a href="#contact" class="card-btn">বিস্তারিত দেখুন</a>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>Computer Technology</h3>
+                    <p>প্রোগ্রামিং, ওয়েব ডেভেলপমেন্ট ও কম্পিউটার সায়েন্সের বেসিক থেকে অ্যাডভান্স টিউটোরিয়াল।</p>
+                    <a href="#contact" class="card-btn">বিস্তারিত দেখুন</a>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-icon"><i class="fa-solid fa-building"></i></div>
+                    <h3>Civil Technology</h3>
+                    <p>সিভিল ইঞ্জিনিয়ারিং এর ড্রয়িং, ডিজাইন এবং এস্টিমেটিং সংক্রান্ত পূর্ণাঙ্গ গাইড।</p>
+                    <a href="#contact" class="card-btn">বিস্তারিত দেখুন</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teachers Section -->
+        <section id="teachers">
+            <h2><i class="fa-solid fa-user-tie"></i> সম্মানিত শিক্ষকবৃন্দ</h2>
+            <div class="teachers-grid">
+                <div class="teacher-card">
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                    <h3>প্রকৌশলী আহমেদ হাসান</h3>
+                    <p>ইনস্ট্রাক্টর, কম্পিউটার টেকনোলজি</p>
+                </div>
+                <div class="teacher-card">
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                    <h3>প্রকৌশলী মাহমুদুল করিম</h3>
+                    <p>ইনস্ট্রাক্টর, ইলেকট্রিক্যাল টেকনোলজি</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Routine Section -->
+        <section id="routine">
+            <h2><i class="fa-solid fa-calendar-days"></i> ক্লাস ও পরীক্ষা রুটিন</h2>
+            <div class="info-box">
+                <p><i class="fa-solid fa-file-pdf"></i> ২০২৬ শিক্ষাবর্ষের সকল সেমিস্টারের ক্লাস রুটিন শীঘ্রই প্রকাশিত হবে।</p>
+            </div>
+        </section>
+
+        <!-- Notice Board Section -->
+        <section id="notice">
+            <h2><i class="fa-solid fa-bullhorn"></i> নোটিশ বোর্ড</h2>
+            <ul class="notice-list">
+                <li><span class="date">২০২৬</span> নতুন সেমিস্টারের ক্লাস শুরুর বিজ্ঞপ্তি।</li>
+                <li><span class="date">২০২৬</span> মিডটার্ম পরীক্ষার সিলেবাস আপডেট করা হয়েছে।</li>
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2><i class="fa-solid fa-envelope"></i> যোগাযোগ করুন</h2>
+            <div class="contact-info">
+                <p><i class="fa-solid fa-phone"></i> মোবাইল: +৮৮০ ১৭০০-০০০০০০</p>
+                <p><i class="fa-solid fa-envelope"></i> ইমেইল: info@karigoribidyapath.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> ঠিকানা: ঢাকা, বাংলাদেশ</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© ২০২৬ কারিগরি বিদ্যাপাঠ | সর্বস্বত্ব সংরক্ষিত</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

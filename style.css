@@ -1,0 +1,320 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+/* Color Variables & Base Reset */
+:root {
+    --primary: #0284c7;
+    --primary-dark: #0369a1;
+    --primary-light: #e0f2fe;
+    --accent: #0f766e;
+    --bg-body: #f1f5f9;
+    --surface: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --radius: 12px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Hind Siliguri', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent) 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 15px;
+    box-shadow: var(--shadow-md);
+}
+
+header .logo {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* Navigation Bar */
+nav {
+    background: var(--surface);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+nav a:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+/* Main Content Layout */
+main {
+    max-width: 1000px;
+    margin: 25px auto;
+    padding: 0 15px;
+}
+
+/* Sections Base Style */
+section {
+    background: var(--surface);
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e2e8f0;
+}
+
+section h2 {
+    color: var(--primary-dark);
+    font-size: 22px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section h2 i {
+    color: var(--primary);
+}
+
+/* Hero Section Style */
+.hero-card {
+    background: linear-gradient(to right, #ffffff, var(--primary-light));
+    border-left: 6px solid var(--primary);
+}
+
+.hero-card .badge {
+    background: var(--primary);
+    color: white;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.hero-card h2 {
+    font-size: 26px;
+    margin-top: 10px;
+}
+
+/* Course Cards Grid */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 15px;
+}
+
+.course-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    border-radius: var(--radius);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    background: #ffffff;
+}
+
+.course-icon {
+    font-size: 28px;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.course-card h3 {
+    font-size: 18px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.course-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.card-btn {
+    display: inline-block;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Teacher Profiles Grid */
+.teachers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.teacher-card {
+    text-align: center;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid #e2e8f0;
+}
+
+.teacher-card .avatar {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 12px;
+}
+
+.teacher-card h3 {
+    font-size: 16px;
+}
+
+.teacher-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Info Box & Notice Board */
+.info-box {
+    background: var(--primary-light);
+    padding: 15px;
+    border-radius: var(--radius);
+    color: var(--primary-dark);
+    font-weight: 500;
+}
+
+.notice-list {
+    list-style: none;
+}
+
+.notice-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 15px;
+}
+
+.notice-list li:last-child {
+    border-bottom: none;
+}
+
+.notice-list .date {
+    background: #e2e8f0;
+    color: var(--text-main);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* Contact Section */
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-info i {
+    color: var(--primary);
+    width: 20px;
+}
+
+/* Button UI */
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: var(--primary-dark);
+}
+
+/* Footer */
+footer {
+    background: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 600px) {
+    header .logo {
+        font-size: 26px;
+    }
+
+    nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+
+    nav a {
+        text-align: center;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+    }
+
+    section {
+        padding: 20px 16px;
+    }
+}
