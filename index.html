@@ -30,6 +30,8 @@
         <a href="#home"><i class="fa-solid fa-house"></i> হোম</a>
         <a href="#about"><i class="fa-solid fa-circle-info"></i> আমাদের সম্পর্কে</a>
         <a href="#courses"><i class="fa-solid fa-book-open"></i> কোর্সসমূহ</a>
+        <a href="#apply"><i class="fa-solid fa-pen-to-square"></i> অনলাইন ভর্তি</a>
+        <a href="#downloads"><i class="fa-solid fa-file-arrow-down"></i> নোটস ও ফাইল</a>
         <a href="#teachers"><i class="fa-solid fa-user-tie"></i> শিক্ষকবৃন্দ</a>
         <a href="#routine"><i class="fa-solid fa-calendar-days"></i> রুটিন</a>
         <a href="#notice"><i class="fa-solid fa-bullhorn"></i> নোটিশ</a>
@@ -46,7 +48,7 @@
             <p>
                 পলিটেকনিক শিক্ষার্থীদের শিক্ষা, নোট, ভিডিও ক্লাস, রুটিন ও প্রয়োজনীয় সকল তথ্যের একটি নিরাপদ ও নির্ভরযোগ্য প্ল্যাটফর্ম।
             </p>
-            <button onclick="showMessage()"><i class="fa-solid fa-rocket"></i> এক্সপ্লোর করুন</button>
+            <a href="#apply"><button><i class="fa-solid fa-rocket"></i> এখনই রেজিস্ট্রেশন করুন</button></a>
         </section>
 
         <!-- About Section -->
@@ -66,21 +68,95 @@
                     <div class="course-icon"><i class="fa-solid fa-bolt"></i></div>
                     <h3>Electrical Technology</h3>
                     <p>ইলেকট্রিক্যাল বিভাগের ১ম থেকে ৮মে সেমিস্টার পর্যন্ত বিষয়ভিত্তিক গাইড ও নোট।</p>
-                    <a href="#contact" class="card-btn">বিস্তারিত দেখুন</a>
+                    <a href="#apply" class="card-btn">ভর্তি আবেদন করুন</a>
                 </div>
 
                 <div class="course-card">
                     <div class="course-icon"><i class="fa-solid fa-laptop-code"></i></div>
                     <h3>Computer Technology</h3>
                     <p>প্রোগ্রামিং, ওয়েব ডেভেলপমেন্ট ও কম্পিউটার সায়েন্সের বেসিক থেকে অ্যাডভান্স টিউটোরিয়াল।</p>
-                    <a href="#contact" class="card-btn">বিস্তারিত দেখুন</a>
+                    <a href="#apply" class="card-btn">ভর্তি আবেদন করুন</a>
                 </div>
 
                 <div class="course-card">
                     <div class="course-icon"><i class="fa-solid fa-building"></i></div>
                     <h3>Civil Technology</h3>
                     <p>সিভিল ইঞ্জিনিয়ারিং এর ড্রয়িং, ডিজাইন এবং এস্টিমেটিং সংক্রান্ত পূর্ণাঙ্গ গাইড।</p>
-                    <a href="#contact" class="card-btn">বিস্তারিত দেখুন</a>
+                    <a href="#apply" class="card-btn">ভর্তি আবেদন করুন</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 1: Online Admission Form Section -->
+        <section id="apply">
+            <h2><i class="fa-solid fa-pen-to-square"></i> অনলাইন ভর্তি ও রেজিস্ট্রেশন ফর্ম</h2>
+            <p style="margin-bottom: 15px;">ভর্তি বা যেকোনো কোর্সে যুক্ত হতে নিচের ফর্মটি পূরণ করুন:</p>
+            
+            <form action="https://formspree.io/f/mknlzkvq" method="POST" class="admission-form">
+                <div class="form-group">
+                    <label for="name">শিক্ষার্থীর নাম:</label>
+                    <input type="text" id="name" name="name" placeholder="আপনার পূর্ণ নাম লিখুন" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">মোবাইল নম্বর:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="017XXXXXXXX" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tech">টেকনোলজি/ডিপার্টমেন্ট:</label>
+                    <select id="tech" name="technology" required>
+                        <option value="">টেকনোলজি নির্বাচন করুন</option>
+                        <option value="Computer">কম্পিউটার টেকনোলজি</option>
+                        <option value="Electrical">ইলেকট্রিক্যাল টেকনোলজি</option>
+                        <option value="Civil">সিভিল টেকনোলজি</option>
+                        <option value="Mechanical">মেকানিক্যাল টেকনোলজি</option>
+                        <option value="Other">অন্যান্য</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="semester">সেমিস্টার:</label>
+                    <select id="semester" name="semester" required>
+                        <option value="">সেমিস্টার নির্বাচন করুন</option>
+                        <option value="1st">১ম সেমিস্টার</option>
+                        <option value="2nd">২য় সেমিস্টার</option>
+                        <option value="3rd">৩য় সেমিস্টার</option>
+                        <option value="4th">৪র্থ সেমিস্টার</option>
+                        <option value="5th">৫ম সেমিস্টার</option>
+                        <option value="6th">৬ষ্ঠ সেমিস্টার</option>
+                        <option value="7th">৭ম সেমিস্টার</option>
+                        <option value="8th">৮ম সেমিস্টার</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn"><i class="fa-solid fa-paper-plane"></i> তথ্য জমা দিন</button>
+            </form>
+        </section>
+
+        <!-- Feature 2: PDF/Notes Download Section -->
+        <section id="downloads">
+            <h2><i class="fa-solid fa-file-arrow-down"></i> হ্যান্ডনোট ও বই ডাউনলোড সেকশন</h2>
+            <div class="download-grid">
+                <div class="download-card">
+                    <i class="fa-solid fa-file-pdf pdf-icon"></i>
+                    <h4>১ম সেমিস্টার বেসিক বুকস</h4>
+                    <p>ফিজিক্স, কেমিস্ট্রি ও ম্যাথ সাজেশন</p>
+                    <a href="#" class="download-btn" onclick="alert('শীঘ্রই ডাউনলোড লিংক যুক্ত হবে!')"><i class="fa-solid fa-download"></i> ডাউনলোড PDF</a>
+                </div>
+
+                <div class="download-card">
+                    <i class="fa-solid fa-file-pdf pdf-icon"></i>
+                    <h4>কম্পিউটার ডিপার্টমেন্ট নোটস</h4>
+                    <p>C Programming & Web Design Note</p>
+                    <a href="#" class="download-btn" onclick="alert('শীঘ্রই ডাউনলোড লিংক যুক্ত হবে!')"><i class="fa-solid fa-download"></i> ডাউনলোড PDF</a>
+                </div>
+
+                <div class="download-card">
+                    <i class="fa-solid fa-file-pdf pdf-icon"></i>
+                    <h4>ইলেকট্রিক্যাল সার্কিট ১</h4>
+                    <p>সংক্ষিপ্ত হ্যান্ডনোট ও প্রশ্ন ব্যাংক</p>
+                    <a href="#" class="download-btn" onclick="alert('শীঘ্রই ডাউনলোড লিংক যুক্ত হবে!')"><i class="fa-solid fa-download"></i> ডাউনলোড PDF</a>
                 </div>
             </div>
         </section>
@@ -119,13 +195,23 @@
             </ul>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Contact Section & Social Media Links -->
         <section id="contact">
             <h2><i class="fa-solid fa-envelope"></i> যোগাযোগ করুন</h2>
             <div class="contact-info">
-                <p><i class="fa-solid fa-phone"></i> মোবাইল: +৮৮০ ১৭০০-০০০০০০</p>
-                <p><i class="fa-solid fa-envelope"></i> ইমেইল: info@karigoribidyapath.com</p>
-                <p><i class="fa-solid fa-location-dot"></i> ঠিকানা: ঢাকা, বাংলাদেশ</p>
+                <p><i class="fa-solid fa-phone"></i> মোবাইল: <a href="tel:01790489291">01790489291</a></p>
+                <p><i class="fa-solid fa-envelope"></i> ইমেইল: <a href="mailto:alaminas9291@gmail.com">alaminas9291@gmail.com</a></p>
+                <p><i class="fa-solid fa-location-dot"></i> ঠিকানা: বাংলাদেশ</p>
+            </div>
+
+            <!-- Feature 3: Social & Direct WhatsApp Chat -->
+            <div class="social-buttons">
+                <a href="https://wa.me/8801790489291" target="_blank" class="whatsapp-btn">
+                    <i class="fa-brands fa-whatsapp"></i> সরাসরি হোয়াটসঅ্যাপে মেসেজ দিন
+                </a>
+                <a href="https://facebook.com" target="_blank" class="facebook-btn">
+                    <i class="fa-brands fa-facebook"></i> ফেসবুক পেজ
+                </a>
             </div>
         </section>
 
