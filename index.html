@@ -87,12 +87,15 @@
             </div>
         </section>
 
-        <!-- Feature 1: Online Admission Form Section -->
+        <!-- Feature 1: Online Admission Form Section (Web3Forms Configured) -->
         <section id="apply">
             <h2><i class="fa-solid fa-pen-to-square"></i> অনলাইন ভর্তি ও রেজিস্ট্রেশন ফর্ম</h2>
             <p style="margin-bottom: 15px;">ভর্তি বা যেকোনো কোর্সে যুক্ত হতে নিচের ফর্মটি পূরণ করুন:</p>
             
-            <form action="https://formspree.io/f/mknlzkvq" method="POST" class="admission-form">
+            <form action="https://api.web3forms.com/submit" method="POST" class="admission-form">
+                <!-- আপনার দেওয়া Access Key সফলভাবে যুক্ত করা হয়েছে -->
+                <input type="hidden" name="access_key" value="D3a69614-be67-4ef4-8c9f-06c15f3ffa98">
+
                 <div class="form-group">
                     <label for="name">শিক্ষার্থীর নাম:</label>
                     <input type="text" id="name" name="name" placeholder="আপনার পূর্ণ নাম লিখুন" required>
@@ -204,7 +207,7 @@
                 <p><i class="fa-solid fa-location-dot"></i> ঠিকানা: বাংলাদেশ</p>
             </div>
 
-            <!-- Feature 3: Social & Direct WhatsApp Chat -->
+            <!-- Social & Direct WhatsApp Chat -->
             <div class="social-buttons">
                 <a href="https://wa.me/8801790489291" target="_blank" class="whatsapp-btn">
                     <i class="fa-brands fa-whatsapp"></i> সরাসরি হোয়াটসঅ্যাপে মেসেজ দিন
@@ -226,4 +229,5 @@
 
 </body>
 
-</html>
+                    </html>
+    
