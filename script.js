@@ -194,26 +194,27 @@ function saveSiteSettings(e) {
     alert("সাইট সেটিংস আপডেট করা হয়েছে!");
 }
 
-// Universal DOM Content Loaded Handlers
+// Page Load Event Listener & Mobile Navigation Handlers
 document.addEventListener("DOMContentLoaded", function() {
     checkAdminAuth();
 
-    // Universal Mobile Menu Toggle Handling (Main Navigation Bar)
-    const mobileMenuIcon = document.querySelector(".fa-bars, .menu-icon, .hamburger, .menu-btn");
-    const mainNav = document.querySelector("nav, .nav-links, .nav-menu, .mobile-menu");
+    // Universal Main Navigation Toggle (Main Website Mobile Menu)
+    const navBtn = document.querySelector(".fa-bars, .menu-icon, .hamburger, .menu-btn");
+    const navLinks = document.querySelector("nav ul, .nav-links, .nav-menu, .mobile-menu");
 
-    if (mobileMenuIcon && mainNav) {
-        mobileMenuIcon.addEventListener("click", function() {
-            mainNav.classList.toggle("active");
-            if (mainNav.style.display === "block" || mainNav.style.display === "flex") {
-                mainNav.style.display = "none";
+    if (navBtn && navLinks) {
+        navBtn.addEventListener("click", function() {
+            navLinks.classList.toggle("active");
+            if (navLinks.style.display === "flex" || navLinks.style.display === "block") {
+                navLinks.style.display = "none";
             } else {
-                mainNav.style.display = "block";
+                navLinks.style.display = "flex";
+                navLinks.style.flexDirection = "column";
             }
         });
     }
 
-    // Mobile Sidebar Handling for Admin Panel
+    // Admin Dashboard Sidebar Handlers
     const toggleBtn = document.querySelector(".sidebar-toggle-btn");
     const mobileSidebar = document.querySelector(".mobile-sidebar");
     const closeBtn = document.querySelector(".close-sidebar-btn");
