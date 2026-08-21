@@ -42,9 +42,9 @@ function saveDatabase(data) {
 
 // Authentication Handlers
 function handleAdminLogin(e) {
-    e.preventDefault();
-    let emailInput = document.getElementById("adminEmail").value.trim();
-    let passInput = document.getElementById("adminPassword").value.trim();
+    if (e) e.preventDefault();
+    let emailInput = document.getElementById("adminEmail")?.value.trim();
+    let passInput = document.getElementById("adminPassword")?.value.trim();
     let errorMsg = document.getElementById("loginErrorMsg");
 
     if (emailInput === ADMIN_EMAIL && passInput === ADMIN_PASS) {
@@ -59,12 +59,13 @@ function checkAdminAuth() {
     let loginScreen = document.getElementById("adminLoginScreen");
     let dashboardWrapper = document.getElementById("dashboardWrapper");
 
+    // কেবল Admin পেজে যদি ড্যাশবোর্ড এলিমেন্ট থাকে তবেই ডিসপ্লে পরিবর্তন হবে
     if (sessionStorage.getItem("is_admin_logged") === "true") {
         if (loginScreen) loginScreen.style.display = "none";
         if (dashboardWrapper) dashboardWrapper.style.display = "flex";
         populateAdminDashboard();
     } else {
-        if (loginScreen) loginScreen.style.display = "flex";
+        if (loginScreen) loginScreen.style.display = "none";
         if (dashboardWrapper) dashboardWrapper.style.display = "none";
     }
 }
@@ -117,7 +118,7 @@ function deleteItem(type, index) {
 }
 
 function saveNotice(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     let db = getDatabase();
     db.notices.unshift({
         title: document.getElementById("noticeTitle").value,
@@ -125,12 +126,12 @@ function saveNotice(e) {
         link: document.getElementById("noticeLink").value
     });
     saveDatabase(db);
-    document.getElementById("addNoticeForm").reset();
+    document.getElementById("addNoticeForm")?.reset();
     populateAdminDashboard();
 }
 
 function saveCourse(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     let db = getDatabase();
     db.courses.unshift({
         title: document.getElementById("courseTitle").value,
@@ -138,12 +139,12 @@ function saveCourse(e) {
         price: document.getElementById("coursePrice").value
     });
     saveDatabase(db);
-    document.getElementById("addCourseForm").reset();
+    document.getElementById("addCourseForm")?.reset();
     populateAdminDashboard();
 }
 
 function saveNote(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     let db = getDatabase();
     db.notes.unshift({
         subject: document.getElementById("noteSubject").value,
@@ -151,12 +152,12 @@ function saveNote(e) {
         link: document.getElementById("noteLink").value
     });
     saveDatabase(db);
-    document.getElementById("addNoteForm").reset();
+    document.getElementById("addNoteForm")?.reset();
     populateAdminDashboard();
 }
 
 function saveTeacher(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     let db = getDatabase();
     db.teachers.unshift({
         name: document.getElementById("teacherName").value,
@@ -164,12 +165,12 @@ function saveTeacher(e) {
         title: document.getElementById("teacherTitle").value
     });
     saveDatabase(db);
-    document.getElementById("addTeacherForm").reset();
+    document.getElementById("addTeacherForm")?.reset();
     populateAdminDashboard();
 }
 
 function saveSiteSettings(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     let db = getDatabase();
     db.settings.phone = document.getElementById("setPhone").value;
     db.settings.email = document.getElementById("setEmail").value;
@@ -178,4 +179,35 @@ function saveSiteSettings(e) {
     alert("সাইট সেটিংস আপডেট করা হয়েছে!");
 }
 
-document.addEventListener("DOMContentLoaded", checkAdminAuth);
+// Page Load Event Listener & Mobile Sidebar Handlers
+document.addEventListener("DOMContentLoaded", function() {
+    checkAdminAuth();
+
+    // Mobile Sidebar Elements Control (Aligned with CSS)
+    const toggleBtn = document.querySelector(".sidebar-toggle-btn");
+    const mobileSidebar = document.querySelector(".mobile-sidebar");
+    const closeBtn = document.querySelector(".close-sidebar-btn");
+    const overlay = document.querySelector(".sidebar-overlay");
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+            if (mobileSidebar) mobileSidebar.classList.add("active");
+            if (overlay) overlay.classList.add("active");
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            if (mobileSidebar) mobileSidebar.classList.remove("active");
+            if (overlay) overlay.classList.remove("active");
+        });
+    }
+
+    if (overlay) {
+        overlay.addEventListener("click", () => {
+            if (mobileSidebar) mobileSidebar.classList.remove("active");
+            if (overlay) overlay.classList.remove("active");
+        });
+    }
+});
+                                                   
