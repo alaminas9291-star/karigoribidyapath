@@ -33,7 +33,7 @@
                 </div>
                 <button type="submit" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> প্রবেশ করুন</button>
             </form>
-            <div id="loginErrorMsg" class="error-msg" style="color:red; margin-top:10px;"></div>
+            <div id="loginErrorMsg" class="error-msg" style="color: red; margin-top: 8px;"></div>
         </div>
     </div>
 
@@ -47,11 +47,12 @@
                 <span>এডমিন ড্যাশবোর্ড</span>
             </div>
             <ul class="admin-menu">
-                <li class="active" onclick="switchTab('tab-overview', this)"><i class="fa-solid fa-chart-line"></i> ওভারভিউ</li>
-                <li onclick="switchTab('tab-notices', this)"><i class="fa-solid fa-bullhorn"></i> নোটিশ ম্যানেজমেন্ট</li>
-                <li onclick="switchTab('tab-courses', this)"><i class="fa-solid fa-laptop-code"></i> কোর্স যুক্ত করুন</li>
-                <li onclick="switchTab('tab-notes', this)"><i class="fa-solid fa-file-pdf"></i> নোটস ও পিডিএফ</li>
-                <li onclick="switchTab('tab-settings', this)"><i class="fa-solid fa-sliders"></i> সাইট সেটিং (ফোন/ইমেইল)</li>
+                <li class="active" onclick="switchTab('tab-overview', event)"><i class="fa-solid fa-chart-line"></i> ওভারভিউ</li>
+                <li onclick="switchTab('tab-notices', event)"><i class="fa-solid fa-bullhorn"></i> নোটিশ ম্যানেজমেন্ট</li>
+                <li onclick="switchTab('tab-courses', event)"><i class="fa-solid fa-laptop-code"></i> কোর্স যুক্ত করুন</li>
+                <li onclick="switchTab('tab-notes', event)"><i class="fa-solid fa-file-pdf"></i> নোটস ও পিডিএফ</li>
+                <li onclick="switchTab('tab-teachers', event)"><i class="fa-solid fa-chalkboard-user"></i> শিক্ষকবৃন্দ</li>
+                <li onclick="switchTab('tab-settings', event)"><i class="fa-solid fa-sliders"></i> সাইট সেটিং (ফোন/ইমেইল)</li>
             </ul>
             <div class="sidebar-footer">
                 <button class="btn-logout" onclick="adminLogout()"><i class="fa-solid fa-power-off"></i> লগআউট</button>
@@ -98,6 +99,13 @@
                                 <p>সক্রিয় নোটিশ</p>
                             </div>
                         </div>
+                        <div class="metric-card green">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                            <div>
+                                <h3 id="countTeachers">0</h3>
+                                <p>শিক্ষকবৃন্দ</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -118,11 +126,9 @@
                         </form>
                     </div>
                     
-                    <div class="table-container">
+                    <div class="table-container" style="margin-top: 20px;">
                         <h3>বর্তমান নোটিশসমূহ</h3>
-                        <ul id="adminNoticeList" style="list-style:none; padding:0;">
-                            <!-- Dynamic List -->
-                        </ul>
+                        <ul id="adminNoticeList" style="list-style: none; padding: 0;"></ul>
                     </div>
                 </div>
 
@@ -150,9 +156,9 @@
                             <button type="submit" class="btn-save"><i class="fa-solid fa-cloud-arrow-up"></i> কোর্স যোগ করুন</button>
                         </form>
                     </div>
-                    <div class="table-container">
+                    <div class="table-container" style="margin-top: 20px;">
                         <h3>বর্তমান কোর্সসমূহ</h3>
-                        <ul id="adminCourseList" style="list-style:none; padding:0;"></ul>
+                        <ul id="adminCourseList" style="list-style: none; padding: 0;"></ul>
                     </div>
                 </div>
 
@@ -173,6 +179,7 @@
                                         <option value="2nd Semester">২য় সেমিস্টার</option>
                                         <option value="3rd Semester">৩য় সেমিস্টার</option>
                                         <option value="4th Semester">৪র্থ সেমিস্টার</option>
+                                        <option value="5th Semester">৫ম সেমিস্টার</option>
                                     </select>
                                 </div>
                             </div>
@@ -183,13 +190,41 @@
                             <button type="submit" class="btn-save"><i class="fa-solid fa-file-import"></i> সেভ করুন</button>
                         </form>
                     </div>
-                    <div class="table-container">
+                    <div class="table-container" style="margin-top: 20px;">
                         <h3>বর্তমান নোটসসমূহ</h3>
-                        <ul id="adminNoteList" style="list-style:none; padding:0;"></ul>
+                        <ul id="adminNoteList" style="list-style: none; padding: 0;"></ul>
                     </div>
                 </div>
 
-                <!-- TAB 5: Site Settings -->
+                <!-- TAB 5: Teacher Management -->
+                <div id="tab-teachers" class="tab-content">
+                    <div class="form-container">
+                        <h3><i class="fa-solid fa-user-plus"></i> শিক্ষক যুক্ত করুন</h3>
+                        <form id="addTeacherForm" onsubmit="saveTeacher(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>শিক্ষকের নাম:</label>
+                                    <input type="text" id="teacherName" placeholder="যেমন: ইঞ্জি. আলামিন হোসেন" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>ডিপার্টমেন্ট:</label>
+                                    <input type="text" id="teacherDept" placeholder="যেমন: Computer Technology" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>পদবী (Designation):</label>
+                                <input type="text" id="teacherTitle" placeholder="যেমন: Senior Instructor" required>
+                            </div>
+                            <button type="submit" class="btn-save"><i class="fa-solid fa-floppy-disk"></i> শিক্ষক সেভ করুন</button>
+                        </form>
+                    </div>
+                    <div class="table-container" style="margin-top: 20px;">
+                        <h3>শিক্ষক তালিকা</h3>
+                        <ul id="adminTeacherList" style="list-style: none; padding: 0;"></ul>
+                    </div>
+                </div>
+
+                <!-- TAB 6: Site Global Settings -->
                 <div id="tab-settings" class="tab-content">
                     <div class="form-container">
                         <h3><i class="fa-solid fa-gears"></i> ওয়েবসাইট ইনফরমেশন এডিট করুন</h3>
@@ -205,7 +240,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>ফুটার বায়ো:</label>
+                                <label>সাইটের বিবরণ/ফুটার বায়ো:</label>
                                 <textarea id="setFooterBio" rows="3">পলিটেকনিক ডিপ্লোমা শিক্ষার্থীদের পড়াশোনা সহজ করতে একটি নির্ভরযোগ্য প্ল্যাটফর্ম।</textarea>
                             </div>
                             <button type="submit" class="btn-save"><i class="fa-solid fa-floppy-disk"></i> পরিবর্তন সেভ করুন</button>
@@ -218,8 +253,34 @@
 
     </div>
 
-    <!-- Main JavaScript File Connection -->
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    
+    <!-- Tab Switching Script -->
+    <script>
+        function switchTab(tabId, e) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.admin-menu li').forEach(el => el.classList.remove('active'));
+            
+            const selectedTab = document.getElementById(tabId);
+            if(selectedTab) selectedTab.classList.add('active');
+            
+            let targetLi = e ? e.currentTarget : event.currentTarget;
+            if(targetLi) targetLi.classList.add('active');
+            
+            const titles = {
+                'tab-overview': 'ওভারভিউ',
+                'tab-notices': 'নোটিশ ম্যানেজমেন্ট',
+                'tab-courses': 'কোর্স ম্যানেজমেন্ট',
+                'tab-notes': 'নোটস ও পিডিএফ',
+                'tab-teachers': 'শিক্ষকবৃন্দ',
+                'tab-settings': 'সাইট সেটিং'
+            };
+            document.getElementById('currentTabTitle').innerText = titles[tabId] || 'ড্যাশবোর্ড';
+        }
+    </script>
     <script src="script.js"></script>
 </body>
-                                                                       </html>
-    
+</html>
