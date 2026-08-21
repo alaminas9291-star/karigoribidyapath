@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <!-- Main Dashboard Workspace (Hidden until authenticated) -->
+    <!-- Main Dashboard Workspace -->
     <div id="dashboardWrapper" class="dashboard-wrapper" style="display: none;">
         
         <!-- Sidebar Navigation -->
@@ -47,12 +47,12 @@
                 <span>এডমিন ড্যাশবোর্ড</span>
             </div>
             <ul class="admin-menu">
-                <li class="active" onclick="switchTab('tab-overview', event)"><i class="fa-solid fa-chart-line"></i> ওভারভিউ</li>
-                <li onclick="switchTab('tab-notices', event)"><i class="fa-solid fa-bullhorn"></i> নোটিশ ম্যানেজমেন্ট</li>
-                <li onclick="switchTab('tab-courses', event)"><i class="fa-solid fa-laptop-code"></i> কোর্স যুক্ত করুন</li>
-                <li onclick="switchTab('tab-notes', event)"><i class="fa-solid fa-file-pdf"></i> নোটস ও পিডিএফ</li>
-                <li onclick="switchTab('tab-teachers', event)"><i class="fa-solid fa-chalkboard-user"></i> শিক্ষকবৃন্দ</li>
-                <li onclick="switchTab('tab-settings', event)"><i class="fa-solid fa-sliders"></i> সাইট সেটিং (ফোন/ইমেইল)</li>
+                <li class="active" onclick="switchTab('tab-overview', this)"><i class="fa-solid fa-chart-line"></i> ওভারভিউ</li>
+                <li onclick="switchTab('tab-notices', this)"><i class="fa-solid fa-bullhorn"></i> নোটিশ ম্যানেজমেন্ট</li>
+                <li onclick="switchTab('tab-courses', this)"><i class="fa-solid fa-laptop-code"></i> কোর্স যুক্ত করুন</li>
+                <li onclick="switchTab('tab-notes', this)"><i class="fa-solid fa-file-pdf"></i> নোটস ও পিডিএফ</li>
+                <li onclick="switchTab('tab-teachers', this)"><i class="fa-solid fa-chalkboard-user"></i> শিক্ষকবৃন্দ</li>
+                <li onclick="switchTab('tab-settings', this)"><i class="fa-solid fa-sliders"></i> সাইট সেটিং (ফোন/ইমেইল)</li>
             </ul>
             <div class="sidebar-footer">
                 <button class="btn-logout" onclick="adminLogout()"><i class="fa-solid fa-power-off"></i> লগআউট</button>
@@ -62,7 +62,6 @@
         <!-- Main Dashboard Content Area -->
         <main class="admin-content">
             
-            <!-- Dashboard Topbar -->
             <header class="admin-topbar">
                 <div class="topbar-title">
                     <h2 id="currentTabTitle">ওভারভিউ</h2>
@@ -120,7 +119,7 @@
                             </div>
                             <div class="form-group">
                                 <label>নোটিশের লিঙ্ক (যদি থাকে):</label>
-                                <input type="url" id="noticeLink" placeholder="https://drive.google.com/...">
+                                <input type="text" id="noticeLink" placeholder="https://drive.google.com/...">
                             </div>
                             <button type="submit" class="btn-save"><i class="fa-solid fa-cloud-arrow-up"></i> পাবলিশ করুন</button>
                         </form>
@@ -185,7 +184,7 @@
                             </div>
                             <div class="form-group">
                                 <label>ড্রাইভ বা পিডিএফ লিংক:</label>
-                                <input type="url" id="noteLink" placeholder="https://drive.google.com/file/d/..." required>
+                                <input type="text" id="noteLink" placeholder="https://drive.google.com/file/d/..." required>
                             </div>
                             <button type="submit" class="btn-save"><i class="fa-solid fa-file-import"></i> সেভ করুন</button>
                         </form>
@@ -253,34 +252,7 @@
 
     </div>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    
-    <!-- Tab Switching Script -->
-    <script>
-        function switchTab(tabId, e) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.admin-menu li').forEach(el => el.classList.remove('active'));
-            
-            const selectedTab = document.getElementById(tabId);
-            if(selectedTab) selectedTab.classList.add('active');
-            
-            let targetLi = e ? e.currentTarget : event.currentTarget;
-            if(targetLi) targetLi.classList.add('active');
-            
-            const titles = {
-                'tab-overview': 'ওভারভিউ',
-                'tab-notices': 'নোটিশ ম্যানেজমেন্ট',
-                'tab-courses': 'কোর্স ম্যানেজমেন্ট',
-                'tab-notes': 'নোটস ও পিডিএফ',
-                'tab-teachers': 'শিক্ষকবৃন্দ',
-                'tab-settings': 'সাইট সেটিং'
-            };
-            document.getElementById('currentTabTitle').innerText = titles[tabId] || 'ড্যাশবোর্ড';
-        }
-    </script>
+    <!-- Main Logic Integration -->
     <script src="script.js"></script>
 </body>
-                                </html>
+</html>
