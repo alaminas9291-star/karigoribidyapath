@@ -145,6 +145,7 @@ ul {
     transition: 0.3s;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
     padding: 20px;
+    overflow-y: auto;
 }
 
 .mobile-sidebar.active {
@@ -165,6 +166,23 @@ ul {
     border: none;
     font-size: 20px;
     cursor: pointer;
+}
+
+.sidebar-menu li {
+    margin-bottom: 12px;
+}
+
+.sidebar-menu a {
+    display: block;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.sidebar-menu a:hover {
+    background: var(--bg-light);
+    color: var(--primary);
 }
 
 .sidebar-overlay {
@@ -385,6 +403,10 @@ ul {
 
 .tab-content {
     display: none;
+    background: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .tab-content.active {
@@ -417,4 +439,11 @@ ul {
     .sidebar-toggle-btn {
         display: block;
     }
-}
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
+    .admin-sidebar {
+        width: 100%;
+    }
+    }
+    
