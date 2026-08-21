@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কারিগরি বিদ্যাপাঠ | অ্যাডমিন ড্যাশবোর্ড</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Dashboard Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+
+    <!-- Auth Protection / Admin Login Screen -->
+    <div id="adminLoginScreen" class="admin-login-modal">
+        <div class="login-card">
+            <div class="login-header">
+                <i class="fa-solid fa-user-shield"></i>
+                <h2>অ্যাডমিন প্যানেল লগইন</h2>
+                <p>কারিগরি বিদ্যাপাঠ ড্যাশবোর্ডে প্রবেশের জন্য তথ্য দিন</p>
+            </div>
+            <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+                <div class="input-group">
+                    <label><i class="fa-solid fa-envelope"></i> ইমেইল</label>
+                    <input type="email" id="adminEmail" placeholder="admin@karigori.com" required>
+                </div>
+                <div class="input-group">
+                    <label><i class="fa-solid fa-key"></i> পাসওয়ার্ড</label>
+                    <input type="password" id="adminPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> প্রবেশ করুন</button>
+            </form>
+            <div id="loginErrorMsg" class="error-msg"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Workspace (Hidden until authenticated) -->
+    <div id="dashboardWrapper" class="dashboard-wrapper" style="display: none;">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>এডমিন ড্যাশবোর্ড</span>
+            </div>
+            <ul class="admin-menu">
+                <li class="active" onclick="switchTab('tab-overview')"><i class="fa-solid fa-chart-line"></i> ওভারভিউ</li>
+                <li onclick="switchTab('tab-notices')"><i class="fa-solid fa-bullhorn"></i> নোটিশ ম্যানেজমেন্ট</li>
+                <li onclick="switchTab('tab-courses')"><i class="fa-solid fa-laptop-code"></i> কোর্স যুক্ত করুন</li>
+                <li onclick="switchTab('tab-notes')"><i class="fa-solid fa-file-pdf"></i> নোটস ও পিডিএফ</li>
+                <li onclick="switchTab('tab-routine')"><i class="fa-solid fa-calendar-days"></i> ক্লাস রুটিন</li>
+                <li onclick="switchTab('tab-teachers')"><i class="fa-solid fa-chalkboard-user"></i> শিক্ষকবৃন্দ</li>
+                <li onclick="switchTab('tab-settings')"><i class="fa-solid fa-sliders"></i> সাইট সেটিং (ফোন/ইমেইল)</li>
+            </ul>
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="adminLogout()"><i class="fa-solid fa-power-off"></i> লগআউট</button>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Content Area -->
+        <main class="admin-content">
+            
+            <!-- Dashboard Topbar -->
+            <header class="admin-topbar">
+                <div class="topbar-title">
+                    <h2 id="currentTabTitle">ওভারভিউ</h2>
+                </div>
+                <div class="admin-user-profile">
+                    <span id="adminUserEmail">admin@karigori.com</span>
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+            </header>
+
+            <div class="dashboard-body">
+
+                <!-- TAB 1: Overview & Analytics -->
+                <div id="tab-overview" class="tab-content active">
+                    <div class="metrics-grid">
+                        <div class="metric-card green">
+                            <i class="fa-solid fa-book-open"></i>
+                            <div>
+                                <h3 id="countCourses">0</h3>
+                                <p>মোট কোর্স</p>
+                            </div>
+                        </div>
+                        <div class="metric-card blue">
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                            <div>
+                                <h3 id="countNotes">0</h3>
+                                <p>মোট পিডিএফ ফাইল</p>
+                            </div>
+                        </div>
+                        <div class="metric-card orange">
+                            <i class="fa-solid fa-bullhorn"></i>
+                            <div>
+                                <h3 id="countNotices">0</h3>
+                                <p>সক্রিয় নোটিশ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Notice Management -->
+                <div id="tab-notices" class="tab-content">
+                    <div class="form-container">
+                        <h3><i class="fa-solid fa-plus-circle"></i> নতুন নোটিশ যোগ করুন</h3>
+                        <form id="addNoticeForm" onsubmit="saveNotice(event)">
+                            <div class="form-group">
+                                <label>নোটিশের শিরোনাম:</label>
+                                <input type="text" id="noticeTitle" placeholder="যেমন: ৪র্থ সেমিস্টার পরীক্ষা ফরম ফিলাপ নোটিশ" required>
+                            </div>
+                            <div class="form-group">
+                                <label>নোটিশের লিঙ্ক (যদি থাকে):</label>
+                                <input type="url" id="noticeLink" placeholder="https://drive.google.com/...">
+                            </div>
+                            <button type="submit" class="btn-save"><i class="fa-solid fa-cloud-arrow-up"></i> পাবলিশ করুন</button>
+                        </form>
+                    </div>
+                    
+                    <div class="table-container">
+                        <h3>বর্তমান নোটিশসমূহ</h3>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>শিরোনাম</th>
+                                    <th>তারিখ</th>
+                                    <th>অ্যাকশন</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminNoticeList">
+                                <!-- Dynamic List -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Course Management -->
+                <div id="tab-courses" class="tab-content">
+                    <div class="form-container">
+                        <h3><i class="fa-solid fa-plus-circle"></i> নতুন কোর্স যোগ করুন</h3>
+                        <form id="addCourseForm" onsubmit="saveCourse(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>কোর্সের নাম:</label>
+                                    <input type="text" id="courseTitle" placeholder="যেমন: Python Programming for Diploma" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>ইনস্ট্রাক্টরের নাম:</label>
+                                    <input type="text" id="courseInstructor" placeholder="যেমন: ইঞ্জি. আলামিন হোসেন" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>কোর্স ফি (টাকা):</label>
+                                    <input type="text" id="coursePrice" placeholder="যেমন: ৫০০ টাকা" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>ছবির লিঙ্ক (Image URL):</label>
+                                    <input type="url" id="courseImage" placeholder="https://..." required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-save"><i class="fa-solid fa-cloud-arrow-up"></i> কোর্স যোগ করুন</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- TAB 4: Notes & PDF Management -->
+                <div id="tab-notes" class="tab-content">
+                    <div class="form-container">
+                        <h3><i class="fa-solid fa-file-circle-plus"></i> হ্যান্ডনোট বা বইয়ের ফাইল যুক্ত করুন</h3>
+                        <form id="addNoteForm" onsubmit="saveNote(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>বিষয়ের নাম:</label>
+                                    <input type="text" id="noteSubject" placeholder="যেমন: Data Structure & Algorithm" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>সেমিস্টার:</label>
+                                    <select id="noteSemester" required>
+                                        <option value="1st">১ম সেমিস্টার</option>
+                                        <option value="2nd">২য় সেমিস্টার</option>
+                                        <option value="3rd">৩য় সেমিস্টার</option>
+                                        <option value="4th">৪র্থ সেমিস্টার</option>
+                                        <option value="5th">৫ম সেমিস্টার</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>ড্রাইভ বা পিডিএফ লিংক (Google Drive PDF Link):</label>
+                                <input type="url" id="notePdfUrl" placeholder="https://drive.google.com/file/d/..." required>
+                            </div>
+                            <button type="submit" class="btn-save"><i class="fa-solid fa-file-import"></i> সেভ করুন</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- TAB 5: Site Global Settings (Phone, Email, Bio) -->
+                <div id="tab-settings" class="tab-content">
+                    <div class="form-container">
+                        <h3><i class="fa-solid fa-gears"></i> ওয়েবসাইট ইনফরমেশন এডিট করুন</h3>
+                        <p class="section-desc">এখানে তথ্য পরিবর্তন করলে সাথে সাথে মূল ওয়েবসাইটে ফোন নম্বর ও ইমেইল আপডেট হয়ে যাবে।</p>
+                        <form id="siteSettingsForm" onsubmit="saveSiteSettings(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>হেল্পলাইন মোবাইল নম্বর:</label>
+                                    <input type="tel" id="setPhone" value="01790489291" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>অফিসিয়াল ইমেইল:</label>
+                                    <input type="email" id="setEmail" value="alaminas9291@gmail.com" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>হোয়াটসঅ্যাপ নম্বর (সরাসরি চ্যাটের জন্য):</label>
+                                <input type="tel" id="setWhatsapp" value="8801790489291" required>
+                            </div>
+                            <div class="form-group">
+                                <label>সাইটের বিবরণ/ফুটার বায়ো:</label>
+                                <textarea id="setFooterBio" rows="3">পলিটেকনিক ডিপ্লোমা শিক্ষার্থীদের পড়াশোনা সহজ করতে একটি নির্ভরযোগ্য প্ল্যাটফর্ম।</textarea>
+                            </div>
+                            <button type="submit" class="btn-save"><i class="fa-solid fa-floppy-disk"></i> পরিবর্তন সেভ করুন</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    
+    <!-- Inline UI Tab Switching Logic -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.admin-menu li').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            const titles = {
+                'tab-overview': 'ওভারভিউ',
+                'tab-notices': 'নোটিশ ম্যানেজমেন্ট',
+                'tab-courses': 'কোর্স ম্যানেজমেন্ট',
+                'tab-notes': 'নোটস ও পিডিএফ',
+                'tab-routine': 'রুটিন ম্যানেজমেন্ট',
+                'tab-teachers': 'শিক্ষকবৃন্দ',
+                'tab-settings': 'সাইট সেটিং'
+            };
+            document.getElementById('currentTabTitle').innerText = titles[tabId] || 'ড্যাশবোর্ড';
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
