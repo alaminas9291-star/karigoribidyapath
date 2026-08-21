@@ -102,20 +102,19 @@
         </div>
         <div class="sidebar-content">
             <ul class="sidebar-menu">
-               <li><a href="admin.html" style="color: #0284c7; font-weight: bold;">🔑 অ্যাডমিন প্যানেল</a></li>
-                
-                <li><a href="#home"><i class="fa-solid fa-house"></i> হোম পেজ</a></li>
+                <li><a href="admin.html" style="color: #0284c7; font-weight: bold;">🔑 অ্যাডমিন প্যানেল</a></li>
+                <li><a href="#home" onclick="toggleSidebar()"><i class="fa-solid fa-house"></i> হোম পেজ</a></li>
                 
                 <li class="sidebar-dropdown">
                     <div class="dropdown-title" onclick="toggleSubMenu('dept-menu')">
                         <span><i class="fa-solid fa-building-columns"></i> ডিপার্টমেন্টসমূহ</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
-                    <ul class="sidebar-submenu" id="dept-menu">
-                        <li><a href="#courses">কম্পিউটার সায়েন্স</a></li>
-                        <li><a href="#courses">ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং</a></li>
-                        <li><a href="#courses">সিভিল ইঞ্জিনিয়ারিং</a></li>
-                        <li><a href="#courses">মেকানিক্যাল ইঞ্জিনিয়ারিং</a></li>
+                    <ul class="sidebar-submenu" id="dept-menu" style="display:none;">
+                        <li><a href="#courses" onclick="toggleSidebar()">কম্পিউটার সায়েন্স</a></li>
+                        <li><a href="#courses" onclick="toggleSidebar()">ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং</a></li>
+                        <li><a href="#courses" onclick="toggleSidebar()">সিভিল ইঞ্জিনিয়ারিং</a></li>
+                        <li><a href="#courses" onclick="toggleSidebar()">মেকানিক্যাল ইঞ্জিনিয়ারিং</a></li>
                     </ul>
                 </li>
 
@@ -124,20 +123,20 @@
                         <span><i class="fa-solid fa-folder-open"></i> ই-বুক ও নোটস</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
-                    <ul class="sidebar-submenu" id="resource-menu">
-                        <li><a href="#downloads">১ম সেমিস্টার হ্যাণ্ডনোট</a></li>
-                        <li><a href="#downloads">২য় সেমিস্টার হ্যাণ্ডনোট</a></li>
-                        <li><a href="#downloads">৩য় সেমিস্টার হ্যাণ্ডনোট</a></li>
-                        <li><a href="#downloads">৪র্থ সেমিস্টার হ্যাণ্ডনোট</a></li>
-                        <li><a href="#downloads">বোর্ড সাজেশন ২০২৬</a></li>
+                    <ul class="sidebar-submenu" id="resource-menu" style="display:none;">
+                        <li><a href="#downloads" onclick="toggleSidebar()">১ম সেমিস্টার হ্যাণ্ডনোট</a></li>
+                        <li><a href="#downloads" onclick="toggleSidebar()">২য় সেমিস্টার হ্যাণ্ডনোট</a></li>
+                        <li><a href="#downloads" onclick="toggleSidebar()">৩য় সেমিস্টার হ্যাণ্ডনোট</a></li>
+                        <li><a href="#downloads" onclick="toggleSidebar()">৪র্থ সেমিস্টার হ্যাণ্ডনোট</a></li>
+                        <li><a href="#downloads" onclick="toggleSidebar()">বোর্ড সাজেশন ২০২৬</a></li>
                     </ul>
                 </li>
 
-                <li><a href="#routine"><i class="fa-solid fa-calendar-days"></i> ক্লাস ও পরীক্ষা রুটিন</a></li>
-                <li><a href="#teachers"><i class="fa-solid fa-users-gear"></i> শিক্ষক ও মেন্টরগণ</a></li>
-                <li><a href="#quiz"><i class="fa-solid fa-circle-question"></i> মডেল টেস্ট ও কুইজ</a></li>
-                <li><a href="#notice"><i class="fa-solid fa-bullhorn"></i> নোটিশ বোর্ড</a></li>
-                <li><a href="#contact"><i class="fa-solid fa-headset"></i> সাপোর্ট ও যোগাযোগ</a></li>
+                <li><a href="#routine" onclick="toggleSidebar()"><i class="fa-solid fa-calendar-days"></i> ক্লাস ও পরীক্ষা রুটিন</a></li>
+                <li><a href="#teachers" onclick="toggleSidebar()"><i class="fa-solid fa-users-gear"></i> শিক্ষক ও মেন্টরগণ</a></li>
+                <li><a href="#quiz" onclick="toggleSidebar()"><i class="fa-solid fa-circle-question"></i> মডেল টেস্ট ও কুইজ</a></li>
+                <li><a href="#notice" onclick="toggleSidebar()"><i class="fa-solid fa-bullhorn"></i> নোটিশ বোর্ড</a></li>
+                <li><a href="#contact" onclick="toggleSidebar()"><i class="fa-solid fa-headset"></i> সাপোর্ট ও যোগাযোগ</a></li>
             </ul>
         </div>
     </aside>
@@ -406,8 +405,6 @@
     <!-- Global Scripts -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-    <script>
-        function toggleSidebar() {
-            document.getElementById('mobileSidebar').classList.toggle('active');
-            document.getElementById('sidebarOverlay').classList.toggle('active');
-        }
+    <script src="script.js"></script>
+</body>
+</html>
