@@ -338,30 +338,6 @@ ul {
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-/* Table Styling */
-.table-responsive {
-    overflow-x: auto;
-}
-
-.custom-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--white);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.custom-table th, .custom-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-}
-
-.custom-table th {
-    background: var(--secondary);
-    color: var(--white);
-}
-
 /* Admin Dashboard Styles */
 .admin-body {
     background: #f1f5f9;
@@ -424,22 +400,49 @@ ul {
     display: block;
 }
 
-/* Floating WhatsApp Button */
-.floating-wa-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25d366;
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+/* Metrics Grid Cards */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.metric-card {
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 26px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 999;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    background: #e0f2fe;
+}
+
+.metric-card i {
+    font-size: 32px;
+    color: var(--primary);
+}
+
+.btn-save, .btn-login {
+    background: var(--primary);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-save:hover, .btn-login:hover {
+    background: var(--primary-dark);
+}
+
+.btn-logout {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
 }
 
 /* Media Queries for Mobile Responsiveness */
