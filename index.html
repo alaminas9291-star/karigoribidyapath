@@ -41,7 +41,7 @@
                 <a href="#home"><i class="fa-solid fa-graduation-cap"></i> <span id="brand-name">কারিগরি বিদ্যাপাঠ</span></a>
             </div>
 
-            <!-- Desktop Navigation Menu with Nested Multi-Level Dropdowns -->
+            <!-- Desktop Navigation Menu -->
             <nav class="desktop-menu">
                 <ul>
                     <li><a href="#home"><i class="fa-solid fa-house"></i> হোম</a></li>
@@ -94,7 +94,7 @@
         </div>
     </header>
 
-    <!-- Sliding Sidebar Menu (Mobile & Advanced Navigation) -->
+    <!-- Sliding Sidebar Menu -->
     <aside class="mobile-sidebar" id="mobileSidebar">
         <div class="sidebar-header">
             <h3><i class="fa-solid fa-compass"></i> নেভিগেশন মেনু</h3>
@@ -128,13 +128,11 @@
                         <li><a href="#downloads" onclick="toggleSidebar()">২য় সেমিস্টার হ্যাণ্ডনোট</a></li>
                         <li><a href="#downloads" onclick="toggleSidebar()">৩য় সেমিস্টার হ্যাণ্ডনোট</a></li>
                         <li><a href="#downloads" onclick="toggleSidebar()">৪র্থ সেমিস্টার হ্যাণ্ডনোট</a></li>
-                        <li><a href="#downloads" onclick="toggleSidebar()">বোর্ড সাজেশন ২০২৬</a></li>
                     </ul>
                 </li>
 
                 <li><a href="#routine" onclick="toggleSidebar()"><i class="fa-solid fa-calendar-days"></i> ক্লাস ও পরীক্ষা রুটিন</a></li>
                 <li><a href="#teachers" onclick="toggleSidebar()"><i class="fa-solid fa-users-gear"></i> শিক্ষক ও মেন্টরগণ</a></li>
-                <li><a href="#quiz" onclick="toggleSidebar()"><i class="fa-solid fa-circle-question"></i> মডেল টেস্ট ও কুইজ</a></li>
                 <li><a href="#notice" onclick="toggleSidebar()"><i class="fa-solid fa-bullhorn"></i> নোটিশ বোর্ড</a></li>
                 <li><a href="#contact" onclick="toggleSidebar()"><i class="fa-solid fa-headset"></i> সাপোর্ট ও যোগাযোগ</a></li>
             </ul>
@@ -146,11 +144,11 @@
     <section class="ticker-wrapper">
         <div class="ticker-head"><i class="fa-solid fa-bolt"></i> জরুরি নোটিশ:</div>
         <div class="ticker-content" id="liveTickerNotice">
-            <span>ফায়ারবেস ডাটাবেজ থেকে রিয়েল-টাইম নোটিশ লোড হচ্ছে...</span>
+            <span>সর্বশেষ আপডেট লোড হচ্ছে...</span>
         </div>
     </section>
 
-    <!-- Hero Section with Search & Action Buttons -->
+    <!-- Hero Section -->
     <section id="home" class="hero-wrapper">
         <div class="hero-overlay">
             <div class="hero-text">
@@ -158,7 +156,6 @@
                 <h1 id="heroTitle">ডিজিটাল পলিটেকনিক শিক্ষায় আপনাকে স্বাগতম</h1>
                 <p id="heroSubtitle">বিটিইবি (BTEB) সিলেবাস অনুযায়ী বিষয়ভিত্তিক ভিডিও ক্লাস, পিডিএফ বই, সাজেশন এবং লাইভ সাপোর্ট।</p>
                 
-                <!-- Live Search Engine -->
                 <div class="hero-search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" id="globalSearchInput" placeholder="যেকোনো বই, সেমিস্টার বা বিষয় খুঁজুন...">
@@ -177,7 +174,7 @@
     <section class="stats-banner">
         <div class="stat-card">
             <i class="fa-solid fa-users"></i>
-            <h2 id="statStudents">0+</h2>
+            <h2 id="statStudents">১০০০+</h2>
             <p>সক্রিয় শিক্ষার্থী</p>
         </div>
         <div class="stat-card">
@@ -200,26 +197,13 @@
     <!-- Main Container -->
     <main class="main-body-container">
 
-        <!-- Department Cards Grid -->
-        <section id="departments" class="section-block">
-            <div class="section-title-box">
-                <h2><i class="fa-solid fa-network-wired"></i> প্রযুক্তি ও ডিপার্টমেন্টসমূহ</h2>
-                <p>আপনার পছন্দের ডিপার্টমেন্ট নির্বাচন করে প্রবিধান ও সিলেবাস দেখুন</p>
-            </div>
-            <div class="dept-grid" id="deptContainer">
-                <!-- Dynamically Loaded via JS -->
-            </div>
-        </section>
-
         <!-- Dynamic Featured Courses -->
         <section id="courses" class="section-block">
             <div class="section-title-box">
                 <h2><i class="fa-solid fa-laptop-code"></i> জনপ্রিয় অনলাইন কোর্সসমূহ</h2>
                 <p>ডিপ্লোমা ইন ইঞ্জিনিয়ারিং স্পেশাল প্রিপারেশন ব্যাচ</p>
             </div>
-            <div class="courses-container-grid" id="dynamicCoursesGrid">
-                <!-- Dynamically Loaded via JS -->
-            </div>
+            <div class="courses-container-grid" id="dynamicCoursesGrid"></div>
         </section>
 
         <!-- Semester Wise PDF Download Section -->
@@ -228,43 +212,7 @@
                 <h2><i class="fa-solid fa-file-arrow-down"></i> হ্যান্ডনোট ও বই ডাউনলোড পোর্টাল</h2>
                 <p>সেমিস্টার অনুযায়ী বিষয়ভিত্তিক পিডিএফ ডাউনলোড করুন</p>
             </div>
-
-            <!-- Filter Buttons -->
-            <div class="filter-btn-group">
-                <button class="filter-btn active" onclick="filterNotes('all')">সকল সেমিস্টার</button>
-                <button class="filter-btn" onclick="filterNotes('1st')">১ম সেমিস্টার</button>
-                <button class="filter-btn" onclick="filterNotes('2nd')">২য় সেমিস্টার</button>
-                <button class="filter-btn" onclick="filterNotes('3rd')">৩য় সেমিস্টার</button>
-                <button class="filter-btn" onclick="filterNotes('4th')">৪র্থ সেমিস্টার</button>
-            </div>
-
-            <div class="downloads-flex-grid" id="dynamicDownloadsGrid">
-                <!-- Dynamically Loaded via JS -->
-            </div>
-        </section>
-
-        <!-- Class & Exam Routine Section -->
-        <section id="routine" class="section-block">
-            <div class="section-title-box">
-                <h2><i class="fa-solid fa-calendar-check"></i> ক্লাস ও পরীক্ষা রুটিন</h2>
-                <p>বিটিইবি এবং ইনস্ট্রিটিউটভিত্তিক সর্বশেষ সময়সূচী</p>
-            </div>
-            <div class="table-responsive">
-                <table class="custom-table">
-                    <thead>
-                        <tr>
-                            <th>টেকনোলজি</th>
-                            <th>সেমিস্টার</th>
-                            <th>বিষয়</th>
-                            <th>সময় ও তারিখ</th>
-                            <th>অ্যাকশন</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dynamicRoutineTable">
-                        <!-- Dynamically Loaded via JS -->
-                    </tbody>
-                </table>
-            </div>
+            <div class="downloads-flex-grid" id="dynamicDownloadsGrid"></div>
         </section>
 
         <!-- Teachers & Instructors Section -->
@@ -273,18 +221,7 @@
                 <h2><i class="fa-solid fa-chalkboard-user"></i> অভিজ্ঞ মেন্টর ও শিক্ষকবৃন্দ</h2>
                 <p>পলিটেকনিক শিক্ষার সেরা ইন্সট্রাক্টরগণ</p>
             </div>
-            <div class="teachers-flex-grid" id="dynamicTeachersGrid">
-                <!-- Dynamically Loaded via JS -->
-            </div>
-        </section>
-
-        <!-- Interactive Quiz Section -->
-        <section id="quiz" class="section-block quiz-banner">
-            <div class="quiz-content">
-                <h2><i class="fa-solid fa-brain"></i> আপনার প্রস্তুতি যাচাই করুন</h2>
-                <p>ডিপ্লোমা সেমিস্টার ফাইনালে ভালো ফলাফলের জন্য অনলাইন কুইজে অংশ নিন।</p>
-                <button class="btn-quiz-start" onclick="alert('কুইজ পোর্টাল লোড হচ্ছে...')">কুইজ শুরু করুন</button>
-            </div>
+            <div class="teachers-flex-grid" id="dynamicTeachersGrid"></div>
         </section>
 
         <!-- Notice Board Section -->
@@ -293,51 +230,7 @@
                 <h2><i class="fa-solid fa-bullhorn"></i> অফিসিয়াল নোটিশ বোর্ড</h2>
                 <p>কারিগরি শিক্ষা বোর্ড ও প্ল্যাটফর্মের আপডেটসমূহ</p>
             </div>
-            <ul class="mega-notice-list" id="dynamicNoticeList">
-                <!-- Dynamically Loaded via JS -->
-            </ul>
-        </section>
-
-        <!-- Online Admission Form Section -->
-        <section id="apply" class="section-block admission-box">
-            <div class="section-title-box">
-                <h2><i class="fa-solid fa-pen-to-square"></i> অনলাইন ভর্তি ও রেজিস্ট্রেশন</h2>
-                <p>ফর্মটি পূরণ করে সরাসরি আপনার কাঙ্ক্ষিত ব্যাচে যুক্ত হোন</p>
-            </div>
-
-            <form action="https://api.web3forms.com/submit" method="POST" class="mega-form">
-                <input type="hidden" name="access_key" value="d3a69614-be67-4ef4-8c9f-06c15f3ffa98">
-
-                <div class="form-row">
-                    <div class="form-field">
-                        <label><i class="fa-solid fa-user"></i> পূর্ণ নাম:</label>
-                        <input type="text" name="name" placeholder="আপনার নাম লিখুন" required>
-                    </div>
-                    <div class="form-field">
-                        <label><i class="fa-solid fa-phone"></i> মোবাইল নম্বর:</label>
-                        <input type="tel" name="phone" placeholder="017XXXXXXXX" required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-field">
-                        <label><i class="fa-solid fa-graduation-cap"></i> পলিটেকনিক নাম:</label>
-                        <input type="text" name="institute" placeholder="ইনস্টিটিউটের নাম লিখুন" required>
-                    </div>
-                    <div class="form-field">
-                        <label><i class="fa-solid fa-microchip"></i> টেকনোলজি:</label>
-                        <select name="technology" required>
-                            <option value="">নির্বাচন করুন</option>
-                            <option value="Computer">কম্পিউটার</option>
-                            <option value="Electrical">ইলেকট্রিক্যাল</option>
-                            <option value="Civil">সিভিল</option>
-                            <option value="Mechanical">মেকানিক্যাল</option>
-                        </select>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-submit-mega"><i class="fa-solid fa-paper-plane"></i> আবেদন জমা দিন</button>
-            </form>
+            <ul class="mega-notice-list" id="dynamicNoticeList"></ul>
         </section>
 
         <!-- Contact Section -->
@@ -348,10 +241,6 @@
                     <p><i class="fa-solid fa-location-dot"></i> ঢাকা, বাংলাদেশ</p>
                     <p><i class="fa-solid fa-phone"></i> ফোন: <a href="tel:01790489291" id="dynPhone">01790489291</a></p>
                     <p><i class="fa-solid fa-envelope"></i> ইমেইল: <a href="mailto:alaminas9291@gmail.com" id="dynEmail">alaminas9291@gmail.com</a></p>
-                </div>
-                <div class="contact-social-btns">
-                    <a href="https://wa.me/8801790489291" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> সরাসরি হোয়াটসঅ্যাপ</a>
-                    <a href="https://facebook.com" class="btn-fb"><i class="fa-brands fa-facebook"></i> ফেসবুক পেজ</a>
                 </div>
             </div>
         </section>
@@ -365,46 +254,13 @@
                 <h3>কারিগরি বিদ্যাপাঠ</h3>
                 <p id="footerBioText">পলিটেকনিক ডিপ্লোমা শিক্ষার্থীদের পড়াশোনা সহজ করতে একটি নির্ভরযোগ্য প্ল্যাটফর্ম।</p>
             </div>
-            <div class="footer-col">
-                <h3>কুইক লিংক</h3>
-                <ul>
-                    <li><a href="#home">হোম</a></li>
-                    <li><a href="#courses">কোর্সসমূহ</a></li>
-                    <li><a href="#downloads">নোটস ডাউনলোড</a></li>
-                    <li><a href="#routine">ক্লাস রুটিন</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>ডিপার্টমেন্ট</h3>
-                <ul>
-                    <li><a href="#departments">কম্পিউটার</a></li>
-                    <li><a href="#departments">ইলেকট্রিক্যাল</a></li>
-                    <li><a href="#departments">সিভিল</a></li>
-                    <li><a href="#departments">মেকানিক্যাল</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>নিউজলেটার</h3>
-                <p>নতুন নোটিশের আপডেট পেতে সাবস্ক্রাইব করুন</p>
-                <div class="newsletter-box">
-                    <input type="email" placeholder="ইমেইল অ্যাড্রেস...">
-                    <button><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-            </div>
         </div>
         <div class="footer-bottom">
             <p>© ২০২৬ কারিগরি বিদ্যাপাঠ | সর্বস্বত্ব সংরক্ষিত।</p>
         </div>
     </footer>
 
-    <!-- Floating Live Chat / WhatsApp Widget Button -->
-    <a href="https://wa.me/8801790489291" class="floating-wa-btn" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
     <!-- Global Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
