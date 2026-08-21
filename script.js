@@ -59,13 +59,14 @@ function checkAdminAuth() {
     let loginScreen = document.getElementById("adminLoginScreen");
     let dashboardWrapper = document.getElementById("dashboardWrapper");
 
-    // কেবল Admin পেজে যদি ড্যাশবোর্ড এলিমেন্ট থাকে তবেই ডিসপ্লে পরিবর্তন হবে
+    if (!loginScreen && !dashboardWrapper) return; // যদি সাধারণ ইউজার পেজ হয় তবে কিছু করবে না
+
     if (sessionStorage.getItem("is_admin_logged") === "true") {
         if (loginScreen) loginScreen.style.display = "none";
         if (dashboardWrapper) dashboardWrapper.style.display = "flex";
         populateAdminDashboard();
     } else {
-        if (loginScreen) loginScreen.style.display = "none";
+        if (loginScreen) loginScreen.style.display = "flex"; // ভুল সংশোধন করা হয়েছে
         if (dashboardWrapper) dashboardWrapper.style.display = "none";
     }
 }
@@ -75,26 +76,36 @@ function adminLogout() {
     checkAdminAuth();
 }
 
+// Admin Tab Switching Function
+function switchTab(tabId, element) {
+    let tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    
+    let activeTab = document.getElementById(tabId);
+    if (activeTab) activeTab.classList.add('active');
+
+    let menuItems = document.querySelectorAll('.admin-menu li');
+    menuItems.forEach(item => item.classList.remove('active'));
+    if (element) element.classList.add('active');
+}
+
 // Populate Data in Admin Lists
 function populateAdminDashboard() {
     let db = getDatabase();
 
-    // Metrics Counters
     if (document.getElementById("countCourses")) document.getElementById("countCourses").innerText = db.courses.length;
     if (document.getElementById("countNotes")) document.getElementById("countNotes").innerText = db.notes.length;
     if (document.getElementById("countNotices")) document.getElementById("countNotices").innerText = db.notices.length;
     if (document.getElementById("countTeachers")) document.getElementById("countTeachers").innerText = db.teachers.length;
 
-    // Settings
     if (document.getElementById("setPhone")) document.getElementById("setPhone").value = db.settings.phone;
     if (document.getElementById("setEmail")) document.getElementById("setEmail").value = db.settings.email;
     if (document.getElementById("setFooterBio")) document.getElementById("setFooterBio").value = db.settings.bio;
 
-    // Render Lists
-    renderList("adminNoticeList", db.notices, (item, i) => `${item.title} (${item.date}) <button onclick="deleteItem('notices', ${i})">মুছুন</button>`);
-    renderList("adminCourseList", db.courses, (item, i) => `${item.title} - ${item.price} <button onclick="deleteItem('courses', ${i})">মুছুন</button>`);
-    renderList("adminNoteList", db.notes, (item, i) => `${item.subject} (${item.semester}) <button onclick="deleteItem('notes', ${i})">মুছুন</button>`);
-    renderList("adminTeacherList", db.teachers, (item, i) => `${item.name} - ${item.dept} <button onclick="deleteItem('teachers', ${i})">মুছুন</button>`);
+    renderList("adminNoticeList", db.notices, (item, i) => `${item.title} (${item.date}) <button onclick="deleteItem('notices', ${i})" style="background:#ef4444; color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">মুছুন</button>`);
+    renderList("adminCourseList", db.courses, (item, i) => `${item.title} - ${item.price} <button onclick="deleteItem('courses', ${i})" style="background:#ef4444; color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">মুছুন</button>`);
+    renderList("adminNoteList", db.notes, (item, i) => `${item.subject} (${item.semester}) <button onclick="deleteItem('notes', ${i})" style="background:#ef4444; color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">মুছুন</button>`);
+    renderList("adminTeacherList", db.teachers, (item, i) => `${item.name} - ${item.dept} <button onclick="deleteItem('teachers', ${i})" style="background:#ef4444; color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">মুছুন</button>`);
 }
 
 function renderList(elementId, array, callback) {
@@ -128,6 +139,7 @@ function saveNotice(e) {
     saveDatabase(db);
     document.getElementById("addNoticeForm")?.reset();
     populateAdminDashboard();
+    alert("নোটিশ সফলভাবে যোগ হয়েছে!");
 }
 
 function saveCourse(e) {
@@ -141,6 +153,7 @@ function saveCourse(e) {
     saveDatabase(db);
     document.getElementById("addCourseForm")?.reset();
     populateAdminDashboard();
+    alert("কোর্স সফলভাবে যোগ হয়েছে!");
 }
 
 function saveNote(e) {
@@ -154,6 +167,7 @@ function saveNote(e) {
     saveDatabase(db);
     document.getElementById("addNoteForm")?.reset();
     populateAdminDashboard();
+    alert("নোট সফলভাবে যোগ হয়েছে!");
 }
 
 function saveTeacher(e) {
@@ -167,6 +181,7 @@ function saveTeacher(e) {
     saveDatabase(db);
     document.getElementById("addTeacherForm")?.reset();
     populateAdminDashboard();
+    alert("শিক্ষক সফলভাবে যোগ হয়েছে!");
 }
 
 function saveSiteSettings(e) {
@@ -183,7 +198,7 @@ function saveSiteSettings(e) {
 document.addEventListener("DOMContentLoaded", function() {
     checkAdminAuth();
 
-    // Mobile Sidebar Elements Control (Aligned with CSS)
+    // Mobile Sidebar Elements Control
     const toggleBtn = document.querySelector(".sidebar-toggle-btn");
     const mobileSidebar = document.querySelector(".mobile-sidebar");
     const closeBtn = document.querySelector(".close-sidebar-btn");
@@ -210,4 +225,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-                                                   
+    
