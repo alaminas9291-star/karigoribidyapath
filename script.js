@@ -59,14 +59,14 @@ function checkAdminAuth() {
     let loginScreen = document.getElementById("adminLoginScreen");
     let dashboardWrapper = document.getElementById("dashboardWrapper");
 
-    if (!loginScreen && !dashboardWrapper) return; // যদি সাধারণ ইউজার পেজ হয় তবে কিছু করবে না
+    if (!loginScreen && !dashboardWrapper) return;
 
     if (sessionStorage.getItem("is_admin_logged") === "true") {
         if (loginScreen) loginScreen.style.display = "none";
         if (dashboardWrapper) dashboardWrapper.style.display = "flex";
         populateAdminDashboard();
     } else {
-        if (loginScreen) loginScreen.style.display = "flex"; // ভুল সংশোধন করা হয়েছে
+        if (loginScreen) loginScreen.style.display = "flex"; // সঠিক করা হয়েছে
         if (dashboardWrapper) dashboardWrapper.style.display = "none";
     }
 }
@@ -225,4 +225,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-    
