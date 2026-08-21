@@ -194,50 +194,34 @@ function saveSiteSettings(e) {
     alert("সাইট সেটিংস আপডেট করা হয়েছে!");
 }
 
-// Page Load Event Listener & Mobile Navigation Handlers
+// ==========================================
+// Main Navigation & Sidebar Specific Handlers
+// ==========================================
+
+// HTML-এর button onclick="toggleSidebar()" এর জন্য
+function toggleSidebar() {
+    const sidebar = document.getElementById("mobileSidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+
+    if (sidebar && overlay) {
+        sidebar.classList.toggle("active");
+        overlay.classList.toggle("active");
+    }
+}
+
+// HTML-এর onclick="toggleSubMenu('dept-menu')" এর জন্য
+function toggleSubMenu(menuId) {
+    const subMenu = document.getElementById(menuId);
+    if (subMenu) {
+        if (subMenu.style.display === "block") {
+            subMenu.style.display = "none";
+        } else {
+            subMenu.style.display = "block";
+        }
+    }
+}
+
+// Global DOM Content Loaded Listener
 document.addEventListener("DOMContentLoaded", function() {
     checkAdminAuth();
-
-    // Universal Main Navigation Toggle (Main Website Mobile Menu)
-    const navBtn = document.querySelector(".fa-bars, .menu-icon, .hamburger, .menu-btn");
-    const navLinks = document.querySelector("nav ul, .nav-links, .nav-menu, .mobile-menu");
-
-    if (navBtn && navLinks) {
-        navBtn.addEventListener("click", function() {
-            navLinks.classList.toggle("active");
-            if (navLinks.style.display === "flex" || navLinks.style.display === "block") {
-                navLinks.style.display = "none";
-            } else {
-                navLinks.style.display = "flex";
-                navLinks.style.flexDirection = "column";
-            }
-        });
-    }
-
-    // Admin Dashboard Sidebar Handlers
-    const toggleBtn = document.querySelector(".sidebar-toggle-btn");
-    const mobileSidebar = document.querySelector(".mobile-sidebar");
-    const closeBtn = document.querySelector(".close-sidebar-btn");
-    const overlay = document.querySelector(".sidebar-overlay");
-
-    if (toggleBtn) {
-        toggleBtn.addEventListener("click", () => {
-            if (mobileSidebar) mobileSidebar.classList.add("active");
-            if (overlay) overlay.classList.add("active");
-        });
-    }
-
-    if (closeBtn) {
-        closeBtn.addEventListener("click", () => {
-            if (mobileSidebar) mobileSidebar.classList.remove("active");
-            if (overlay) overlay.classList.remove("active");
-        });
-    }
-
-    if (overlay) {
-        overlay.addEventListener("click", () => {
-            if (mobileSidebar) mobileSidebar.classList.remove("active");
-            if (overlay) overlay.classList.remove("active");
-        });
-    }
 });
