@@ -194,11 +194,7 @@ function saveSiteSettings(e) {
     alert("সাইট সেটিংস আপডেট করা হয়েছে!");
 }
 
-// ==========================================
-// Main Navigation & Sidebar Specific Handlers
-// ==========================================
-
-// HTML-এর button onclick="toggleSidebar()" এর জন্য
+// Global UI Component Handlers (Mobile Sidebar Toggle)
 function toggleSidebar() {
     const sidebar = document.getElementById("mobileSidebar");
     const overlay = document.getElementById("sidebarOverlay");
@@ -209,7 +205,6 @@ function toggleSidebar() {
     }
 }
 
-// HTML-এর onclick="toggleSubMenu('dept-menu')" এর জন্য
 function toggleSubMenu(menuId) {
     const subMenu = document.getElementById(menuId);
     if (subMenu) {
@@ -221,7 +216,6 @@ function toggleSubMenu(menuId) {
     }
 }
 
-// Global DOM Content Loaded Listener
 document.addEventListener("DOMContentLoaded", function() {
     checkAdminAuth();
 });
