@@ -66,7 +66,7 @@ function checkAdminAuth() {
         if (dashboardWrapper) dashboardWrapper.style.display = "flex";
         populateAdminDashboard();
     } else {
-        if (loginScreen) loginScreen.style.display = "flex"; // সঠিক করা হয়েছে
+        if (loginScreen) loginScreen.style.display = "flex";
         if (dashboardWrapper) dashboardWrapper.style.display = "none";
     }
 }
@@ -194,11 +194,26 @@ function saveSiteSettings(e) {
     alert("সাইট সেটিংস আপডেট করা হয়েছে!");
 }
 
-// Page Load Event Listener & Mobile Sidebar Handlers
+// Universal DOM Content Loaded Handlers
 document.addEventListener("DOMContentLoaded", function() {
     checkAdminAuth();
 
-    // Mobile Sidebar Elements Control
+    // Universal Mobile Menu Toggle Handling (Main Navigation Bar)
+    const mobileMenuIcon = document.querySelector(".fa-bars, .menu-icon, .hamburger, .menu-btn");
+    const mainNav = document.querySelector("nav, .nav-links, .nav-menu, .mobile-menu");
+
+    if (mobileMenuIcon && mainNav) {
+        mobileMenuIcon.addEventListener("click", function() {
+            mainNav.classList.toggle("active");
+            if (mainNav.style.display === "block" || mainNav.style.display === "flex") {
+                mainNav.style.display = "none";
+            } else {
+                mainNav.style.display = "block";
+            }
+        });
+    }
+
+    // Mobile Sidebar Handling for Admin Panel
     const toggleBtn = document.querySelector(".sidebar-toggle-btn");
     const mobileSidebar = document.querySelector(".mobile-sidebar");
     const closeBtn = document.querySelector(".close-sidebar-btn");
